@@ -1,0 +1,14 @@
+.btn-list-format {
+    margin-left: 5px;
+    width: 65px;
+    height: 30px;
+    margin-top: 5px;
+    background-color: rgb(252, 209, 92);
+    color: #000000;
+    font-size: 18px;
+    position: relative;
+    bottom: 4px;
+    border-width: 0px;
+    border-radius: 20px;
+  }
+  

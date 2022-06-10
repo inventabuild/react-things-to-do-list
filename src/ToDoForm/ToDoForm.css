@@ -1,0 +1,31 @@
+.todo-form {
+    display: flex;
+    flex-direction: column;
+  }
+ .btn-form-format {
+    width: 65px;
+    height: 30px;
+    margin-top: 5px;
+    background-color: rgb(132, 253, 197);
+    color: #000000;
+    font-size: 18px;
+    border-width: 0px;
+    border-radius: 20px;
+ }
+ .item-field {
+    position: relative;
+    bottom: 4px;
+    padding: 3px;
+    margin: 4px;
+    height: 20px;
+ }
+ .date-field {
+    position: relative;
+    bottom: 4px;
+    padding: 4px;
+    margin: 5px;
+    height: 20px;
+ }
+ .todo-label {
+     line-height: 100px;
+ }

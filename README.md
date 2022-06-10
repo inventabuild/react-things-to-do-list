@@ -68,3 +68,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Project 3
+
+## Link
+
+## Short Description
+Project 3 build is a Things To Do list using REACT components.  Future enhancements will include sorting by date and pages for each date.
+
+## User Stories
+User Story 1, As a busy person with lots of things to do, I want a way to list those things on the computer, so I don't lose track of them.
