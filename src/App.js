@@ -8,7 +8,7 @@ function App() {
   ]);
   let [nextKey, setNextKey] = React.useState([1]);
    const addItem = (item, date) => {
-    if (item === "") {
+    if (item.trim() === "") {
       alert("Item field empty");
       return;
     }

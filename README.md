@@ -79,3 +79,4 @@ Project 3 build is a Things To Do list using REACT components.  Future enhanceme
 
 ## User Stories
 User Story 1, As a busy person with lots of things to do, I want a way to list those things on the computer, so I don't lose track of them.
+User Story 2, As an engineer with lots of things to do, I need a way to organize those things in a list, so I don't lose track of them.
