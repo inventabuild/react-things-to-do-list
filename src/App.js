@@ -7,7 +7,7 @@ function App() {
   let [listItems, setListItems] = React.useState([
   ]);
   let [nextKey, setNextKey] = React.useState([1]);
-  const addItem = (item, date) => {
+   const addItem = (item, date) => {
     if (item === "") {
       alert("Item field empty");
       return;

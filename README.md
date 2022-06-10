@@ -72,6 +72,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 # Project 3
 
 ## Link
+https://inventabuild.github.io/react-things-to-do-list/
 
 ## Short Description
 Project 3 build is a Things To Do list using REACT components.  Future enhancements will include sorting by date and pages for each date.
