@@ -6,14 +6,15 @@ import ToDoList from "./ToDoList/ToDoList";
 function App() {
   let [listItems, setListItems] = React.useState([
   ]);
-  let [nextKey, setNextKey] = React.useState([1]);
-   const addItem = (item, date) => {
-    if (item.trim() === "") {
+  let [nextKey, setNextKey] = React.useState(1);
+  const addItem = (item, date) => {
+    if (item.replace(/^\s\s*/, '').replace(/\s\s*$/, '') === "") {
       alert("Item field empty");
       return;
     }
     setListItems([...listItems, {item, date, key: nextKey }]);
     setNextKey(nextKey + 1);
+    nextKey = nextKey + 1;
   };
   const deleteItem = (targetkey) => {
     setListItems(listItems.filter((item) => item.key !== targetkey));
