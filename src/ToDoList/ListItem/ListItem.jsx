@@ -7,7 +7,7 @@ export default function ListItem(props) {
   };
   return (
     <li>
-      {props.item} {props.date}
+      {props.item} {props.date} {props.status} {props.id}
       <button className="btn-list-format" onClick={handleClick}>
         Delete
       </button>

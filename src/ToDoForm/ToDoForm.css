@@ -3,7 +3,7 @@
     flex-direction: column;
   }
  .btn-form-format {
-    width: 65px;
+    width: 85px;
     height: 30px;
     margin-top: 5px;
     background-color: rgb(132, 253, 197);
@@ -28,4 +28,13 @@
  }
  .todo-label {
      line-height: 100px;
+ }
+ .dropdown-toggle {
+   margin-bottom: 8px;
+   height: 30px;
+   width: 85px;
+   border-width: 0px;
+    border-radius: 20px;
+    font-size: 18px;
+    background-color: rgb(96, 212, 233);
  }
