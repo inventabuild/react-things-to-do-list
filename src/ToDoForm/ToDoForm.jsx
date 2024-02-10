@@ -2,7 +2,9 @@ import React from "react";
 import "./ToDoForm.css";
 
 export default function ToDoForm(props) {
+  console.log("ran ToDoForm.jsx")
   const [item, setItem] = React.useState("");
+  console.log(item)
   const [date, setDate] = React.useState("");
   const addItem2 = (event) => {
     event.preventDefault();
