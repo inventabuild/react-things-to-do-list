@@ -10,7 +10,7 @@ import NoPage from "./Pages/NoPage";
 // import ListItem from "./ToDoList/ListItem/ListItem";
 
 function App() {
-  console.log("ran App.js")
+  console.log("ran ToDoForm App")
   let [listItems, setListItems] = React.useState([]);
   console.log(listItems)
   let [nextKey, setNextKey] = React.useState(1);
@@ -27,7 +27,7 @@ function App() {
       newListItemsFiltered = newListItemsFiltered.filter((item) => item.itemStatus === "Deleted");
     }
     else {
-      console.log("Completed called")
+      console.log("Current newListItemsFiltered called in App.js")
       newListItemsFiltered = newListItemsFiltered.filter((item) => item.itemStatus === "Current");
     };
     setListItems(newListItems);
@@ -52,21 +52,23 @@ function App() {
     // setListItems(newListItems);
     setListItemsFiltered(newListItemsFiltered);
     console.log(newListItemsFiltered);
+    console.log(setListItemsFiltered);
   };
   const formStatusChange = (formStatus) => {
     debugger;
   console.log("formStatusChange called")
   if (formStatus === "Deleted") {
     console.log("Deleted called")
+    console.log(listItems);
+    setListItemsFiltered(listItems.filter((item) => item.itemStatus === "Deleted"));
     console.log(listItemsFiltered);
-    setListItemsFiltered(listItems.filter((item) => item.status === "Deleted"));
     // console.log(listItems[1].item)
     // setListItemsFiltered(listItemsFiltered.filter((x) => x.status === "Deleted"));
   }
   else {
-    console.log("Completed called")
+    console.log("Current setListItemsFiltered called in App.js")
     console.log(listItemsFiltered);
-    setListItemsFiltered(listItemsFiltered.filter((item) => item.status === "Current"));
+    setListItemsFiltered(listItemsFiltered.filter((item) => item.itemStatus === "Current"));
     // setListItemsFiltered(listItemsFiltered.filter((x) => x.status === "Completed"));
   };
   };
@@ -105,5 +107,6 @@ function App() {
     );
   }
 }
-
+console.log("after ran App")
+debugger
 export default App;

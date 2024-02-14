@@ -2,7 +2,7 @@ import React from "react";
 import "./ListItem.css";
 
 export default function ListItem(props) {
-  console.log("ran ToList ListItems.js")
+  console.log("ran ListItems.jsx")
   let handleClick = () => {
     console.log("ran handleClick")
     props.deleteItem(props.id);

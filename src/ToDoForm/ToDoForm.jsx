@@ -2,11 +2,14 @@ import React from "react";
 import "./ToDoForm.css";
 
 export default function ToDoForm(props) {
-  console.log("ran ToDoForm.jsx")
+  console.log("ran function ToDoForm")
+  const [date, setDate] = React.useState("");
+  console.log(date)
   const [item, setItem] = React.useState("");
   console.log(item)
-  const [date, setDate] = React.useState("");
+  
   const addItem2 = (event) => {
+    console.log("ran addItem2")
     event.preventDefault();
     let item2 = document.querySelector("[name=item]").value;
     let date2 = document.querySelector("[name=date]").value;
@@ -16,28 +19,34 @@ export default function ToDoForm(props) {
     setItem("");
     setDate("");
   };
+  // console.log(props.item2, props.date2, props.itemStatus, props.formStatus)
+  console.log("after addItem2")
   const handleItemChange = (event) => {
+    console.log("ran handleItemChange")
     setItem(event.target.value)
   }
+  console.log("after handleItemChange")
   const handleDateChange = (event) => {
+    console.log("ran handleDateChange")
     setDate(event.target.value)
   }
-  // var keyholder = 0
+  console.log("after handleDateChange")
  var statusDropDown = props.statusDropDown.map(function (option) {
+  console.log("ran statusDropDownChange")
+  console.log(props.statusDropDown, option)
     return<option key = {option.key}>{option.value}</option>
-  }) 
-//   var errMsg = ""
-//   if (props.statusDropDown[0] === "Deleted") {
-//     errMsg="Frodo shall not pass"
-//     errMsg="X"
-//   }
+  })
+  console.log(statusDropDown)
+  console.log("after statusDropDownChange")
   const handleFormStatusChange = (event) => {
     console.log("handleFormStatusChange called")
+    debugger
     event.preventDefault();
     let status2 = document.querySelector("[name=status").value;
-    
     props.handleFormStatusChange(status2);
   }
+  debugger
+  console.log(props.handleFormStatusChange)
   return (
     <form action="#" method="GET" className="todo-form" onSubmit={addItem2}>
         <select className="dropdown-toggle" name="status" onChange={handleFormStatusChange}>{statusDropDown}</select>
