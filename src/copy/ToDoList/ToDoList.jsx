@@ -3,8 +3,8 @@ import "./ToDoList.css";
 import ListItem from "./ListItem/ListItem";
 
 export default function ToDoList(props) {
-  if(props.itemsFiltered)
-  {
+  console.log("ran ToDoList.jsx")
+  console.log(props)
   let ListItemsJsx = props.itemsFiltered.map((dummyvar) => (
     <ListItem
       item={dummyvar.item}
@@ -15,6 +15,6 @@ export default function ToDoList(props) {
       deleteItem={props.deleteItem}
     />
   ))
+  debugger
   return <ul className="todo-list">{ListItemsJsx}</ul>
-  }
 }

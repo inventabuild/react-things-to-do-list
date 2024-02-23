@@ -5,7 +5,7 @@
  .btn-form-format {
     width: 85px;
     height: 30px;
-    margin-top: 8px;
+    margin-top: 5px;
     background-color: rgb(132, 253, 197);
     color: #000000;
     font-size: 18px;
@@ -27,7 +27,7 @@
     height: 20px;
  }
  .todo-label {
-     line-height: 70px;
+     line-height: 100px;
  }
  .dropdown-toggle {
    margin-bottom: 8px;

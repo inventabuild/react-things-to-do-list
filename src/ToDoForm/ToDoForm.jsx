@@ -2,65 +2,45 @@ import React from "react";
 import "./ToDoForm.css";
 
 export default function ToDoForm(props) {
-  console.log("ran function ToDoForm")
-  const [date, setDate] = React.useState("");
-  console.log(date)
   const [item, setItem] = React.useState("");
-  console.log(item)
-  
+  const [date, setDate] = React.useState("");
   const addItem2 = (event) => {
-    console.log("ran addItem2")
     event.preventDefault();
-    let item2 = document.querySelector("[name=item]").value;
-    let date2 = document.querySelector("[name=date]").value;
-    let itemStatus = "Current";
-    let formStatus = document.querySelector("[name=status]").value;
-    props.addItem(item2, date2, itemStatus, formStatus);
+    props.addItem(item, date, "Current", props.dropdownValue); // Pass dropdownValue from props
     setItem("");
     setDate("");
   };
-  // console.log(props.item2, props.date2, props.itemStatus, props.formStatus)
-  console.log("after addItem2")
+
   const handleItemChange = (event) => {
-    console.log("ran handleItemChange")
-    setItem(event.target.value)
-  }
-  console.log("after handleItemChange")
+    setItem(event.target.value);
+  };
+
   const handleDateChange = (event) => {
-    console.log("ran handleDateChange")
-    setDate(event.target.value)
-  }
-  console.log("after handleDateChange")
- var statusDropDown = props.statusDropDown.map(function (option) {
-  console.log("ran statusDropDownChange")
-  console.log(props.statusDropDown, option)
-    return<option key = {option.key}>{option.value}</option>
-  })
-  console.log(statusDropDown)
-  console.log("after statusDropDownChange")
+    setDate(event.target.value);
+  };
+
   const handleFormStatusChange = (event) => {
-    console.log("handleFormStatusChange called")
-    debugger
-    event.preventDefault();
-    let status2 = document.querySelector("[name=status").value;
-    props.handleFormStatusChange(status2);
-  }
-  debugger
-  console.log(props.handleFormStatusChange)
+    const status = event.target.value;
+    props.handleFormStatusChange(status);
+  };
+
+  const statusDropDown = props.statusDropDown.map((option) => (
+    <option key={option.key} value={option.value}>{option.value}</option>
+  ));
   return (
     <form action="#" method="GET" className="todo-form" onSubmit={addItem2}>
-        <select className="dropdown-toggle" name="status" onChange={handleFormStatusChange}>{statusDropDown}</select>
-        <label className="todo-label">
+      <select className="dropdown-toggle" name="status" onChange={handleFormStatusChange} value={props.dropdownValue}>
+        {statusDropDown}
+      </select>
+      <label className="todo-label">
         Item:
-        <input type="text" name="item" className="item-field" onChange={handleItemChange} value={item}/>
+        <input type="text" name="item" className="item-field" onChange={handleItemChange} value={item} />
       </label>
-      <label>
+      <label className="todo-label">
         Date:
-        <input type="date" name="date" className="date-field" onChange={handleDateChange} value={date}/>
+        <input type="date" name="date" className="date-field" onChange={handleDateChange} value={date} />
       </label>
-      <button type="submit" className="btn-form-format">
-        Add
-      </button>
+      <button type="submit" className="btn-form-format">Add</button>
     </form>
   );
 }

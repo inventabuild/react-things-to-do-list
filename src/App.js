@@ -1,112 +1,103 @@
 import "./App.css";
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React , { useState, useEffect }  from "react";
+import { BrowserRouter, Routes, Route , Link} from "react-router-dom";
 import ToDoForm from "./ToDoForm/ToDoForm";
 import ToDoList from "./ToDoList/ToDoList";
 import Header from "./Components/Header"
 import Contact from "./Pages/Contact";
 import NoPage from "./Pages/NoPage";
 
-// import ListItem from "./ToDoList/ListItem/ListItem";
-
 function App() {
-  console.log("ran ToDoForm App")
-  let [listItems, setListItems] = React.useState([]);
-  console.log(listItems)
-  let [nextKey, setNextKey] = React.useState(1);
-  let [listItemsFiltered, setListItemsFiltered] = React.useState([]);
+ 
+  const [nextKey, setNextKey] = React.useState(1);
+  // property to save the current items
+  const [currentItems, setCurrentItems] = React.useState([]);
+   // property to deleted the current items
+  const [deletedItems, setDeletedItems] = React.useState([]);
+   // property to save the all items
+  const [filteredItems, setFilteredItems] = React.useState([]);
+   // property to maintain the dropdown state
+  const [dropdownValue, setDropdownValue] = React.useState("Current");
+
+// react hook to update the state of all the properties, just like useState
+  useEffect(() => {
+    const newFilteredItems = dropdownValue === "Deleted" ? deletedItems : currentItems;
+    setFilteredItems(newFilteredItems);
+  }, [dropdownValue, currentItems, deletedItems]);
+
+  
   const addItem = (item, date, itemStatus, formStatus) => {
-    if (item.replace(/^\s\s*/, '').replace(/\s\s*$/, '') === "") {
+    if (item.trim() === "") {
       alert("Item field empty");
       return;
     }
-    let newListItems = [...listItems, {item, date, itemStatus, key: nextKey }];
-    let newListItemsFiltered = newListItems.map(obj => ({...obj}));
-    if (formStatus === "Deleted") {
-      console.log("Deleted called")
-      newListItemsFiltered = newListItemsFiltered.filter((item) => item.itemStatus === "Deleted");
-    }
-    else {
-      console.log("Current newListItemsFiltered called in App.js")
-      newListItemsFiltered = newListItemsFiltered.filter((item) => item.itemStatus === "Current");
-    };
-    setListItems(newListItems);
-    setListItemsFiltered(newListItemsFiltered);
-    setNextKey(nextKey + 1);
-    console.log(newListItemsFiltered);
-  };
-  const deleteItem = (targetkey) => {
-    debugger;
-    console.log("deleteItem called");
-    console.log(targetkey);
-    const found = listItems.find(obj => {return obj.key === targetkey});
-    console.log(found);
-    listItems.find(obj => {return obj.key === targetkey}).itemStatus = "Deleted";
-    console.log(listItems);
-    debugger;
-    let newListItems = listItems.filter((item) => item.key !== targetkey)
- 
-
-    let newListItemsFiltered = listItemsFiltered.filter((item) => item.key !== targetkey)
-    // I don't think I need to change master list ListItems to newListItems
-    // setListItems(newListItems);
-    setListItemsFiltered(newListItemsFiltered);
-    console.log(newListItemsFiltered);
-    console.log(setListItemsFiltered);
-  };
-  const formStatusChange = (formStatus) => {
-    debugger;
-  console.log("formStatusChange called")
-  if (formStatus === "Deleted") {
-    console.log("Deleted called")
-    console.log(listItems);
-    setListItemsFiltered(listItems.filter((item) => item.itemStatus === "Deleted"));
-    console.log(listItemsFiltered);
-    // console.log(listItems[1].item)
-    // setListItemsFiltered(listItemsFiltered.filter((x) => x.status === "Deleted"));
-  }
-  else {
-    console.log("Current setListItemsFiltered called in App.js")
-    console.log(listItemsFiltered);
-    setListItemsFiltered(listItemsFiltered.filter((item) => item.itemStatus === "Current"));
-    // setListItemsFiltered(listItemsFiltered.filter((x) => x.status === "Completed"));
-  };
-  };
-  // const dropDownList = ["Current", "Deleted"];
-  const dropDownList = [
-    {key: 1, value: "Current"},
-    {key: 2, value: "Deleted"}
-  ]
-  // const statusChange = (event) => {
     
-  // }
- 
+    //here this will add a new item into the currentItem list as well as the main filteredItems list
+    const newItem = { item, date, itemStatus, key: nextKey };
+    if (formStatus === "Current") {
+      setCurrentItems([...currentItems, newItem]);
+      setFilteredItems(currentItems);
+    }
+    // if you try to add the item when the dropdown state is set as deleted this will not allow to add
+    if (formStatus === "Deleted") {
+      alert('Please change the state to Current to add a new task!');
+    }
+    setNextKey(nextKey + 1);
+  };
+
+
+  const deleteItem = (targetKey) => {
+
+    // here we will delete the item and marked it as deleted into the main filteredItems list and save it into the deletedItems list so show
+    let item = filteredItems.find(i => i.key == targetKey);
+    setDeletedItems([...deletedItems, item])
+    setFilteredItems(filteredItems.map(item => {
+      if (item.key === targetKey) {
+        item.itemStatus = "Deleted";
+      }
+      return item;
+    }));
+
+    // here we are removing the deleted item from the currentItems list so that it won't show under current items anymore
+    setCurrentItems(currentItems.filter(item => item.key != targetKey));
+  };
+
+  const formStatusChange = (formStatus) => {
+    // when we change the status dropdown this will filter out the items based on the current or deleted state
+    setDropdownValue(formStatus);
+    const newFilteredItems = formStatus === "Deleted" ? deletedItems : currentItems;
+    setFilteredItems(newFilteredItems);
+  };
+
+  const dropDownList = [
+    { key: 1, value: "Current" },
+    { key: 2, value: "Deleted" }
+  ];
+
   return (
     <div className="App">
       <nav className="header-nav">
           <a className="header-nav-link" href="/">Home</a>
           <a className="header-nav-link" href="./Contact">Contact Us</a>
       </nav>
-      <main>
-        <BrowserRouter>
+      <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route index path="/" element={<Home />} />
             <Route path="/Contact" element={<Contact />} />
           </Routes>
         </BrowserRouter>
-      </main>
     </div>
   );
-  function Home(){
+
+  function Home() {
     return (
       <>
         <Header />
-        <ToDoForm addItem={addItem} statusDropDown={dropDownList} handleFormStatusChange = {formStatusChange} />
-        <ToDoList itemsFiltered={listItemsFiltered} deleteItem={deleteItem} />
+        <ToDoForm addItem={addItem} statusDropDown={dropDownList} dropdownValue={dropdownValue} handleFormStatusChange={formStatusChange} />
+        <ToDoList itemsFiltered={filteredItems} deleteItem={deleteItem} />
       </>
     );
   }
 }
-console.log("after ran App")
-debugger
+
 export default App;
