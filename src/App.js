@@ -12,9 +12,9 @@ function App() {
   const [nextKey, setNextKey] = React.useState(1);
   // property to save the current items
   const [currentItems, setCurrentItems] = React.useState([]);
-   // property to deleted the current items
+   // property to delete the current items
   const [deletedItems, setDeletedItems] = React.useState([]);
-   // property to save the all items
+   // property to save all items
   const [filteredItems, setFilteredItems] = React.useState([]);
    // property to maintain the dropdown state
   const [dropdownValue, setDropdownValue] = React.useState("Current");

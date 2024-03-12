@@ -17,20 +17,18 @@
     bottom: 4px;
     padding: 3px;
     margin: 4px;
-    height: 20px;
  }
  .date-field {
     position: relative;
     bottom: 4px;
     padding: 4px;
     margin: 5px;
-    height: 20px;
  }
  .todo-label {
-     line-height: 70px;
+     line-height: 30px;
  }
  .dropdown-toggle {
-   margin-bottom: 8px;
+   margin-bottom: 10px;
    height: 30px;
    width: 85px;
    border-width: 0px;
