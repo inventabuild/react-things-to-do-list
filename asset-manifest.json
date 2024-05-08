@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/inventabuild/react-things-to-do-list.git/static/css/main.33706f0f.css",
-    "main.js": "/inventabuild/react-things-to-do-list.git/static/js/main.5e2bf598.js",
-    "static/js/787.5e1044c0.chunk.js": "/inventabuild/react-things-to-do-list.git/static/js/787.5e1044c0.chunk.js",
-    "index.html": "/inventabuild/react-things-to-do-list.git/index.html",
-    "main.33706f0f.css.map": "/inventabuild/react-things-to-do-list.git/static/css/main.33706f0f.css.map",
-    "main.5e2bf598.js.map": "/inventabuild/react-things-to-do-list.git/static/js/main.5e2bf598.js.map",
-    "787.5e1044c0.chunk.js.map": "/inventabuild/react-things-to-do-list.git/static/js/787.5e1044c0.chunk.js.map"
+    "main.css": "/react-things-to-do-list/static/css/main.33706f0f.css",
+    "main.js": "/react-things-to-do-list/static/js/main.fa10a710.js",
+    "static/js/787.5e1044c0.chunk.js": "/react-things-to-do-list/static/js/787.5e1044c0.chunk.js",
+    "index.html": "/react-things-to-do-list/index.html",
+    "main.33706f0f.css.map": "/react-things-to-do-list/static/css/main.33706f0f.css.map",
+    "main.fa10a710.js.map": "/react-things-to-do-list/static/js/main.fa10a710.js.map",
+    "787.5e1044c0.chunk.js.map": "/react-things-to-do-list/static/js/787.5e1044c0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.33706f0f.css",
-    "static/js/main.5e2bf598.js"
+    "static/js/main.fa10a710.js"
   ]
 }
